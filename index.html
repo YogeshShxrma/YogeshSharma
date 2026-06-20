@@ -700,15 +700,13 @@ footer{
       <h2 class="contact-headline">Let's build<br>something great.</h2>
       <p class="contact-sub">Whether you have a project in mind or just want to explore possibilities — I'm open to conversations about meaningful work.</p>
       <div class="contact-items">
-        <a href="mailto:yogesh@example.com" class="contact-item"><div class="contact-item-icon">@</div><span>yogesh@example.com</span></a>
-        <a href="https://wa.me/919999999999" class="contact-item"><div class="contact-item-icon">✆</div><span>+91 XXXXX XXXXX</span></a>
+        <a href="mailto:ys2aethonlabs@gmail.com" class="contact-item"><div class="contact-item-icon">@</div><span>ys2aethonlabs@gmail.com</span></a>
+        <a href="https://wa.me/918827087768" class="contact-item"><div class="contact-item-icon">✆</div><span>+91 88270-87768</span></a>
         <div class="contact-item"><div class="contact-item-icon">◎</div><span>Raipur, Chhattisgarh, India</span></div>
       </div>
       <div class="social-row">
-        <a href="#" class="social-btn">GH</a>
-        <a href="#" class="social-btn">LI</a>
-        <a href="#" class="social-btn">TW</a>
-        <a href="#" class="social-btn">DR</a>
+        <a href="https://github.com/YogeshShxrma" class="social-btn">GH</a>
+        <a href="https://www.linkedin.com/in/yogesh-sharma-933205317/" class="social-btn">LI</a>
       </div>
     </div>
     <div class="fade-in">
@@ -719,11 +717,11 @@ footer{
         </div>
         <div class="form-body">
           <div class="form-row">
-            <div class="form-field"><label class="form-label">NAME_</label><input type="text" class="form-input" placeholder="Your name"></div>
-            <div class="form-field"><label class="form-label">EMAIL_</label><input type="email" class="form-input" placeholder="your@email.com"></div>
+            <div class="form-field"><label class="form-label">NAME_</label><input type="text" id="f-name" class="form-input" placeholder="Your name"></div>
+            <div class="form-field"><label class="form-label">EMAIL_</label><input type="email" id="f-email" class="form-input" placeholder="your@email.com"></div>
           </div>
-          <div class="form-field"><label class="form-label">PROJECT_TYPE_</label><input type="text" class="form-input" placeholder="Web App / Design / AI / Other"></div>
-          <div class="form-field"><label class="form-label">MESSAGE_</label><textarea class="form-input" placeholder="Tell me about your project..."></textarea></div>
+          <div class="form-field"><label class="form-label">PROJECT_TYPE_</label><input type="text" id="f-type" class="form-input" placeholder="Web App / Design / AI / Other"></div>
+          <div class="form-field"><label class="form-label">MESSAGE_</label><textarea class="form-input" id="f-message" placeholder="Tell me about your project..."></textarea></div>
           <button class="form-submit" id="form-submit">&gt; SEND_MESSAGE.exe</button>
         </div>
       </div>
@@ -891,7 +889,24 @@ document.querySelectorAll('.fade-in').forEach(el=>obs.observe(el));
 
 /* ─── FORM SUBMIT ─────────────────────────────────────────── */
 document.getElementById('form-submit').addEventListener('click',function(){
+  var name=document.getElementById('f-name').value.trim();
+  var email=document.getElementById('f-email').value.trim();
+  var type=document.getElementById('f-type').value.trim();
+  var message=document.getElementById('f-message').value.trim();
+
+  var subject='New project inquiry'+(name?' from '+name:'');
+  var body=
+    'Name: '+name+'\n'+
+    'Email: '+email+'\n'+
+    'Project type: '+type+'\n\n'+
+    'Message:\n'+message;
+
+  var mailto='mailto:ys2aethonlabs@gmail.com'+
+    '?subject='+encodeURIComponent(subject)+
+    '&body='+encodeURIComponent(body);
+
   this.textContent='> TRANSMITTING...';this.style.color='var(--text3)';
+  window.location.href=mailto;
   setTimeout(()=>{this.textContent='> MESSAGE SENT ✓';this.style.color='var(--green)';
     setTimeout(()=>{this.textContent='> SEND_MESSAGE.exe';this.style.color=''},3000)},1200);
 });
