@@ -36,6 +36,13 @@ body.cur-hover #cur-ring{
   background:rgba(0,255,136,0.04);
 }
 
+/* ── Restore native cursor on touch / coarse-pointer devices ── */
+@media (hover:none),(pointer:coarse){
+  *{cursor:auto!important}
+  button,a,.form-submit,.hamburger{cursor:pointer!important}
+  #cur-dot,#cur-ring{display:none!important}
+}
+
 :root{
   --bg:#000000;
   --bg2:#030303;
